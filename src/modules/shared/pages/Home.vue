@@ -27,7 +27,7 @@
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
             <h6 class="text-sm">LOGO</h6>
-            <img src='public/LOGOR.png'>
+            <img src='@/assets/LOGOR.png'>
             <ul class="flex-column ms-n3 nav">
             
             </ul>
