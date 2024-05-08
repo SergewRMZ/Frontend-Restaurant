@@ -1,5 +1,8 @@
 
 <template>
+   <div class="page-header align-items-start min-vh-100":style="{ backgroundImage: 'url(' + require('@/assets/Restaurante5.jpg') + ')' }" loading="lazy">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+
   <div class="container-sm mt-5 w-50">
     <div class="row">
       <div class="col">
@@ -30,6 +33,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
