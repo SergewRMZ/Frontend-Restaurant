@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'; 
-
+import isAuthenticatedGuard from './auth-guard';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -30,9 +30,22 @@ const routes: RouteRecordRaw[] = [
         name: 'login-user',
         component: () => import (/* webpackChunkName: "Login" */ '@/modules/users/pages/Login.vue')
       },
+
+      {
+        path: 'reservacion',
+        name: 'ReservacionUsuario',
+        component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/users/pages/Reservation.vue')
+      }
     ]
   },
 
+  {
+    path: '/carta',
+    name: 'carta',
+    component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/shared/pages/Menu.vue')
+  },
+
+  // Si se ingresa cualquier otra ruta, se direcciona al home
   {
     path: '/:pathMatch(.*)*', 
     redirect: 'home' 

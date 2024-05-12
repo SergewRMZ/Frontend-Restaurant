@@ -1,5 +1,5 @@
 interface User {
-  name: String,
+  name: String | null,
   email: String,
   password: String,
 }
