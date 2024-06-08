@@ -1,13 +1,14 @@
 <template>
   <div
-    class="page-header align-items-start min-vh-100"
+    
+      class="page-header  min-vh-100"
     :style="{
       backgroundImage: 'url(' + require('@/assets/Restaurante.webp') + ')',
     }"
     loading="lazy"
   >
-    <span class="mask bg-gradient-dark opacity-6"></span>
-
+  <!--  <span class="mask bg-gradient-dark opacity-6"></span>-->
+<!-- 
     <div class="container my-auto">
       <div class="row">
         <div class="col-lg-4 col-md-8 col-12 mx-auto">
@@ -57,7 +58,19 @@
           </div>
         </div>
       </div>
+    </div>-->
+    <div class="overlay">
+    <div class="login">
+      <form class="form1">
+        <h1 class="h11">Iniciar sesión</h1>
+        <label class="label1">Correo</label>
+        <input class="input1" type="email">
+        <label class="label1">Contraseña</label>
+        <input  class="input1" type="password">
+        <button class="button11">Ingresar</button>
+      </form>
     </div>
+  </div>
   </div>
 </template>
 
@@ -99,7 +112,9 @@ export default {
 
         /** En caso de que el login sea correcto, se llama al router para cargar la vista 'HomeUsuario' */
         this.$router.push({ name: 'ReservacionUsuario' });
-      } catch (error) {
+      } catch (error) {     
+        /*En caso de que el login sea incorrecto */
+        alert("Correo o contraseña incorrecto");
         console.log(this.message_error);
       }
     },

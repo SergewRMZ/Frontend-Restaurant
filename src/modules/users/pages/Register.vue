@@ -7,7 +7,7 @@
     }"
     loading="lazy"
   >
-    <span class="mask bg-gradient-dark opacity-6"></span>
+ <!--   <span class="mask bg-gradient-dark opacity-6"></span>
 
     <div class="container-sm w-50 my-auto">
       <div class="row">
@@ -65,6 +65,41 @@
         </div>
       </div>
     </div>
+  -->
+    <div class="overlay">
+    <div class="login">
+      <form class="form1" @submit.prevent="handleSubmit">
+
+        <h1 class="h11">Registrarse</h1>
+
+        <label class="label1">Nombre</label>
+        <input class="input1"  v-model="name"
+                    id="name"
+                    name="name"
+                    type="text"
+                    required>
+
+        <label class="label1">Correo</label>
+        <input class="input1" v-model="email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    required>
+
+        <label class="label1">Contraseña</label>
+        <input  class="input1" v-model="password"
+                    id="password"
+                    type="password"
+                    required>
+
+        <button class="button11"  
+                type="submit"
+                :disabled="!isFormValid">
+                  Enviar</button>
+      </form>
+    </div>
+  </div>
+
   </div>
 </template>
 
