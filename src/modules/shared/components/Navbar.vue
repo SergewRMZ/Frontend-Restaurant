@@ -46,7 +46,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              v-if="this.isLogged"
+              v-if="!this.isLogged"
               :to="{ name: 'ReservacionUsuario' }"
               >Reservación</router-link
             >

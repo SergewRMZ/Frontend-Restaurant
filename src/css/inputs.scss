@@ -14,6 +14,17 @@
 
 :root {
   --bs-font-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+  --dark-text: #f8fbff;
+  --light-body: #f3f8fe;
+  --light-main : #fdfdfd;
+  --light-second: #1e059b;
+  --light-hover: #f0f0f0;
+  --light-text: #151426;
+  --light-btn: #7471f1;
+  --blue : #0000ff;
+  --white : #fff;
+  --shadow : rgba ( 0 , 0 , 255 , 0.2 ) 0px 7px 29px 0px;
+  --font-family : consolas;
   }
   
   .py-3 {
@@ -386,3 +397,78 @@
   .btn-dark, .btn.bg-gradient-dark {
     box-shadow: 0 3px 3px 0 rgba(52, 71, 103, .15), 0 3px 1px -2px rgba(52, 71, 103, .2), 0 1px 5px 0 rgba(52, 71, 103, .15);
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login{
+  border: 1px solid black;
+  width:400px;
+  height: 500px;
+  color:white;
+  background: url('@/assets/Restaurante2.webp');
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+  background-size:cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.form1{
+  display: block;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  backdrop-filter: brightness(40%);
+  display: flex;
+  gap: 5px;
+}
+
+.h11{
+ font-weight: normal;
+ font-size: 24px;
+ text-shadow: 0px 0px 2px rgba(0, 0, 0, 5);
+ margin-bottom: 60px;
+}
+
+.label1{
+  //color:rgba(255, 255, 255, 0.8);
+  color:white;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-left: 10px;
+}
+
+.input1{
+  background: rgba(255, 255, 255, 0.3);
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  padding: 0px 20px;
+  border: none;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.button11{
+  background: rgb(5, 19, 38);
+  height: 40px;
+  line-height: 40px;
+  border-radius: 40px;
+  border: none;
+  margin: 10px 0px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
