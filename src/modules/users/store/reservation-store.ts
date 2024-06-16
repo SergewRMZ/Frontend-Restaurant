@@ -2,7 +2,7 @@ import TypeReservation from '@/interfaces/reservation-interface';
 import Reservation from '../helpers/Reservation';
 
 interface ReservationState {
-    reservation: TypeReservation | null,
+    reservations: TypeReservation[] | null,
     message_error: string | null,
 };
 
@@ -10,13 +10,13 @@ const ReservationStore = {
     namespaced: true,
 
     state: (): ReservationState => ({
-        reservation: null,
+        reservations: null,
         message_error: ''
     }),
 
     mutations: {
-        setReservation(state: ReservationState, reservation: TypeReservation) {
-            state.reservation = reservation;
+        setReservation(state: ReservationState, reservations: TypeReservation[]) {
+            state.reservations = reservations;
         },
 
         setErrorMessage (state: ReservationState, message_error: string | null) {
@@ -31,11 +31,20 @@ const ReservationStore = {
     actions: {
         async createReservation ({commit}: any, reservation: TypeReservation) {
             try {
-                const data = await Reservation.createReservation(reservation);
+                const data = await Reservation.createReservation(reservation,);
             } catch (error: any) {
                 commit('setErrorMessage', error.response.data.error);
             }
-            
+        },
+
+        async getUserReservation ({ commit }: any, { id, token }: { id: string, token: string }) {
+            try {
+                const data = await Reservation.getUserReservation(id, token);
+                console.log(data);
+                commit('setReservation', data);
+            } catch (error: any) {
+                commit('setErrorMessage', error.response.data.error);
+            }
         }
     }
 };

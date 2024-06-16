@@ -56,6 +56,15 @@
             <router-link
               class="nav-link"
               v-if="this.isLogged"
+              :to="{ name: 'PerfilUsuario' }"
+              >Perfil</router-link
+            >
+          </li>
+
+          <li class="nav-item">
+            <router-link
+              class="nav-link"
+              v-if="this.isLogged"
               v-on:click="logoutAction"
               :to="{ name: 'home' }"
               >Cerrar Sesión</router-link

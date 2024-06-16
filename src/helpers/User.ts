@@ -20,8 +20,6 @@ const User = (() => {
   }
 
   const loginUser = async (user: TypeUser) => {
-    console.log(user);
-
     try {
       const response = await Api.post('/auth/login', user);
       if(response.status === 200)

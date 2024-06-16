@@ -1,6 +1,6 @@
 import TypeReservation from '@/interfaces/reservation-interface';
 import Api from '@/api/users';
- 
+
 const Reservation = (() => {
     const createReservation = async (reservation: TypeReservation) => {
         try {
@@ -22,15 +22,38 @@ const Reservation = (() => {
             else {
                 console.log(response.statusText);
             }
-            
+
         } catch (error: any) {
             throw error;
         }
     }
 
-    return {
-        createReservation
+    const getUserReservation = async (id: string, token: string) => {
+        try {  
+            const response = await Api.get(`/reservation/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            
+            if (response.status === 201) {
+                return response.data;
+            }
+
+            else {
+                console.log(response.statusText);
+            }
+        } catch (error: any) {
+            throw error;
+        }
     }
+    
+    return {
+        createReservation,
+        getUserReservation
+    }
+
 })();
 
 export default Reservation;

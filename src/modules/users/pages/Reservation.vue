@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h2 class="mt-5">¡Bienvenido {{ name }}!</h2>
-
     <div class="container">
       <div class="row justify-content-start">
         <div class="col-md-6 d-flex align-items-center justify-content-center">

@@ -23,7 +23,9 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mostrarAlertaError } from '@/helpers/alert';
+import Swal from 'sweetalert2';
+import { mapActions, mapMutations, mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -41,6 +43,7 @@ export default {
 
   methods: {
     ...mapActions('user', ['login']),
+    ...mapMutations('user', ['clearErrorMessage']),
 
     async handleSubmit() {
       try {
@@ -49,16 +52,12 @@ export default {
           password: this.password,
         };
 
-        console.log(data);
-
         await this.login(data);
-
         this.$router.push({ name: 'ReservacionUsuario' });
       } catch (error) {     
         
-        
-        alert("Correo o contraseña incorrecto");
-        console.log(this.message_error);
+        mostrarAlertaError(this.message_error);
+        this.clearErrorMessage();
       }
     },
   },

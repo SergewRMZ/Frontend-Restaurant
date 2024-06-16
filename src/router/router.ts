@@ -36,7 +36,14 @@ const routes: RouteRecordRaw[] = [
         name: 'ReservacionUsuario',
         component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/users/pages/Reservation.vue'),
         beforeEnter: isAuthenticatedGuard // Guard para autenticar token
-      }
+      },
+
+      {
+        path: 'profile',
+        name: 'PerfilUsuario',
+        component: () => import (/* webpackChunkName: "Perfil" */ '@/modules/users/pages/Perfil.vue'),
+        beforeEnter: isAuthenticatedGuard // Guard para autenticar token
+      },
     ]
   },
 
