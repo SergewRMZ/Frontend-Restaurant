@@ -53,7 +53,7 @@
       <div class="d-flex justify-content-evenly mb-5">
         <div>
           <router-link
-            :to="{ name: 'ReservacionUsuario' }"
+            :to="{ name: this.isLogged ? 'ReservacionUsuario' : 'login-user' }"
             class="btn btn-dark btn-home"
             >Reserva Aquí</router-link
           >
@@ -208,7 +208,14 @@
   </footer>
 </template>
 
-
+<script>
+import { mapState } from "vuex";
+  export default {
+    computed: {
+      ...mapState('user', ['isLogged']),
+    },
+  };
+</script>
 
 <style>
   .btn-home {

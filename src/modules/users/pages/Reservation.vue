@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="mt-5">¡Bienvenido {{ name }}!</h2>
-    
+
     <div class="container">
       <div class="row justify-content-start">
         <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -40,7 +40,8 @@
             <form class="form1" @submit.prevent="handleSubmit">
               <h1 class="h11">Reservación</h1>
               <label class="label1">Número de personas</label>
-              <input class="input1" v-model="numPersonas" id="numPersonas" name="numPersonas" type="number" min="1" required>
+              <input class="input1" v-model="numPersonas" id="numPersonas" name="numPersonas" type="number" min="1"
+                required>
 
               <label class="label1">Fecha</label>
               <input class="input1" v-model="date" id="date" name="date" type="date" required>
@@ -80,7 +81,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Swal from 'sweetalert2';
+import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
   data() {
@@ -88,7 +90,7 @@ export default {
       numPersonas: 1,
       date: '',
       time: '',
-      
+
       currentMonth: new Date().getMonth(),
       currentYear: new Date().getFullYear(),
       days: [],
@@ -103,13 +105,36 @@ export default {
 
   computed: {
     ...mapState('user', ['name']),
+    ...mapState('reservation', ['reservation', 'message_error']),
+
     isFormValid() {
       return this.numPersonas && this.date && this.time;
     }
   },
 
   methods: {
-      isLeapYear(year) {
+    ...mapActions('reservation', ['createReservation']),
+    ...mapMutations('reservation', ['clearErrorMessage']),
+
+    async handleSubmit () {
+      const data = {
+        numberPeople: this.numPersonas,
+        date: this.date,
+        time: this.time
+      }
+
+      await this.createReservation(data);
+      Swal.fire({
+          title: this.message_error ? this.message_error : 'Reservación creada correctamente',
+          position: 'center',
+          icon: this.message_error ? 'error' : 'success',
+          timer: 1500
+        })
+
+      this.clearErrorMessage();
+    },
+
+    isLeapYear(year) {
       return (
         (year % 4 === 0 && year % 100 !== 0) ||
         (year % 400 === 0)
@@ -128,11 +153,11 @@ export default {
       for (let i = 0; i < daysOfMonth[month] + firstDay; i++) {
         if (i >= firstDay) {
           const day = i - firstDay + 1;
-          const dayH = day === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth() 
-            ? `<span class="current-date">${day}</span>` 
+          const dayH = day === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()
+            ? `<span class="current-date">${day}</span>`
             : day;
           this.days.push(dayH);
-        } 
+        }
         else {
           this.days.push('');
         }
@@ -147,7 +172,7 @@ export default {
       if (this.currentMonth < 0) {
         this.currentMonth = 11;
         this.currentYear -= 1;
-      } 
+      }
       else if (this.currentMonth > 11) {
         this.currentMonth = 0;
         this.currentYear += 1;
@@ -208,7 +233,7 @@ export default {
   height: max-content;
   width: max-content;
   position: relative;
- 
+
   top: -5px;
   text-align: justify;
   font-size: 2rem;

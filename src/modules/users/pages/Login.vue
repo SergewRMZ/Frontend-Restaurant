@@ -1,73 +1,21 @@
 <template>
   <div
-    
-      class="page-header  min-vh-100"
+    class="page-header  min-vh-100"
     :style="{
       backgroundImage: 'url(' + require('@/assets/Restaurante.webp') + ')',
     }"
     loading="lazy"
   >
-  <!--  <span class="mask bg-gradient-dark opacity-6"></span>-->
-<!-- 
-    <div class="container my-auto">
-      <div class="row">
-        <div class="col-lg-4 col-md-8 col-12 mx-auto">
-          <div class="card z-index-0 fadeIn3 fadeInBottom">
-            <div class="card-header z-index-2 header-form">
-              <div class="border-radius-lg pe-1">
-                <h4 class="text-black font-weight-bolder text-center mt-2 mb-0">
-                  Iniciar Sesión
-                </h4>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <form @submit.prevent="handleSubmit">
-                <div class="mb-3 text-start">
-                  <label for="email" class="form-label"
-                    >Correo</label
-                  >
-                  <input
-                    id="email"
-                    type="email"
-                    v-model="email"
-                    name="email"
-                    class="form-control"
-                    placeholder="Correo Electrónico"
-                    required
-                  />
-                </div>
-
-                <div class="mb-5 text-start">
-                  <label for="password" class="form-label"
-                    >Contraseña</label
-                  >
-                  <input
-                    id="password"
-                    type="password"
-                    v-model="password"
-                    class="form-control"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-
-                <button class="btn btn-dark w-75" type="submit" :disabled="!isFormValid">Enviar</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
-    <div class="overlay">
+  
+  <div class="overlay">
     <div class="login">
-      <form class="form1">
+      <form class="form1" @submit.prevent="handleSubmit">
         <h1 class="h11">Iniciar sesión</h1>
         <label class="label1">Correo</label>
-        <input class="input1" type="email">
+        <input class="input1" type="email" v-model="this.email">
         <label class="label1">Contraseña</label>
-        <input  class="input1" type="password">
-        <button class="button11">Ingresar</button>
+        <input  class="input1" type="password" v-model="this.password">
+        <button class="button11" :disabled="!isFormValid">Ingresar</button>
       </form>
     </div>
   </div>
@@ -85,10 +33,6 @@ export default {
   },
 
   computed: {
-
-    // Aquí se va a mapear el state, las propiedades del estado del objeto.
-    // Se coloca el nombre del módulo, como se nombró en el archivo del store principal.
-
     ...mapState('user', ['message_error']),
     isFormValid() {
       return this.email.trim() !== "" && this.password.trim() !== "";
@@ -96,9 +40,6 @@ export default {
   },
 
   methods: {
-
-    // Aquí se van a mapear las acciones del objeto.
-
     ...mapActions('user', ['login']),
 
     async handleSubmit() {
@@ -108,12 +49,14 @@ export default {
           password: this.password,
         };
 
+        console.log(data);
+
         await this.login(data);
 
-        /** En caso de que el login sea correcto, se llama al router para cargar la vista 'HomeUsuario' */
         this.$router.push({ name: 'ReservacionUsuario' });
       } catch (error) {     
-        /*En caso de que el login sea incorrecto */
+        
+        
         alert("Correo o contraseña incorrecto");
         console.log(this.message_error);
       }

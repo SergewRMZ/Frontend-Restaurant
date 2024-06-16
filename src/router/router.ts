@@ -32,9 +32,10 @@ const routes: RouteRecordRaw[] = [
       },
 
       {
-        path: 'reservacion',
+        path: 'reservation',
         name: 'ReservacionUsuario',
-        component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/users/pages/Reservation.vue')
+        component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/users/pages/Reservation.vue'),
+        beforeEnter: isAuthenticatedGuard // Guard para autenticar token
       }
     ]
   },
