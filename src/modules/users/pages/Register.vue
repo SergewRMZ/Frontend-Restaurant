@@ -7,65 +7,6 @@
     }"
     loading="lazy"
   >
- <!--   <span class="mask bg-gradient-dark opacity-6"></span>
-
-    <div class="container-sm w-50 my-auto">
-      <div class="row">
-        <div class="col">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">
-              <h5 class="card-title">Registrarse</h5>
-
-              <form @submit.prevent="handleSubmit">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Nombre</label>
-                  <input
-                    v-model="name"
-                    id="name"
-                    name="name"
-                    type="text"
-                    class="form-control"
-                    required
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="email" class="form-label">Correo</label>
-                  <input
-                    v-model="email"
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="form-control"
-                    required
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input
-                    v-model="password"
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    required
-                  />
-                </div>
-
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  :disabled="!isFormValid"
-                >
-                  Enviar
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  -->
     <div class="overlay">
     <div class="login">
       <form class="form1" @submit.prevent="handleSubmit">
@@ -104,6 +45,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -124,9 +67,10 @@ export default {
   },
 
   methods: {
+    ...mapActions['user', ['registerUser']],
     async handleSubmit() {
       try {
-        const data = await registerUser({
+        const data = await this.registerUser({
           name: this.name,
           email: this.email,
           password: this.password,

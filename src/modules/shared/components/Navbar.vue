@@ -1,7 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">
+        <img src="@/assets/LOGO_SN.png" class="img-fluid" width="50" height="50"/>
+      </a>
+      
       <button
         class="navbar-toggler"
         type="button"
