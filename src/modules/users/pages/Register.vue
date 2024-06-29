@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mostrarMensaje } from '@/helpers/alert';
 import { mapActions } from 'vuex';
 
 export default {
@@ -53,21 +54,27 @@ export default {
   },
 
   methods: {
+    ...mapActions('user', ['registerUser']),
     async handleSubmit() {
       try {
-        const data = await registerUser({
+        const data = {
           name: this.name,
           email: this.email,
           password: this.password,
-        });
+        }
 
         await this.registerUser(data);
+        mostrarMensaje('Registro', 'Usuario registrado correctamente');
+        
         this.$router.push({ name: 'login-user' });
       } catch (error) {
         console.error(error);
       }
     },
   },
+
+  mounted() {
+  }
 };
 </script>
 

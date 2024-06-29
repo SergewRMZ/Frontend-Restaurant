@@ -18,3 +18,15 @@ export function mostrarAlertaError(mensaje: string) {
   });
 }
 
+export function mostrarMensaje (title: string, mensaje: string) {
+  Swal.fire({
+    title: title,
+    text: mensaje,
+    position: 'center',
+    background: 'var(--color__primario)',
+    color: '#fff',
+    icon: 'success',
+    timer: 2000
+  })
+}
+

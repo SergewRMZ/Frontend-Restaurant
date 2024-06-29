@@ -76,6 +76,7 @@ const UserStore = {
 
     async registerUser ({commit}: any, user:TypeUser) {
       try {
+        console.log('Registro');
         const data = await User.registerUser(user);
         console.log(`Usuario registrado ${data}`);
       } catch (error: any) {
@@ -92,10 +93,6 @@ const UserStore = {
       commit('setLoggedIn', false);
       await new Promise(resolve => setTimeout(resolve, 500));
     },
-
-    async registerUser ({commit}:any, user: TypeUser) {
-      const data = await User.registerUser(user);
-    }
   },
 
   getters: {

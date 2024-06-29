@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     name: 'home',
-    component: () => import (/* webpackChunkName: "Home" */ '@/modules/shared/pages/Home.vue')
+    component: () => import (/* webpackChunkName: "Home" */ '@/modules/menu/views/Home.vue')
   },
 
   {

@@ -32,34 +32,6 @@
 export default {
   data() {
     return {
-      cards: [
-        {
-          image: require('@/assets/Bacalao.jpg'),
-          title: 'Bacalao',
-          subtitle: '',
-          description: 'Bacalao a la plancha con puré de papa con wasabi y glaseado de miso, acompañado de semillas de sésamo.',
-          isShowing: false,
-          zIndex: 0
-        },
-        {
-          image: require('@/assets/Ensalada.jpg'),
-          title: 'Ensalada',
-          subtitle: '',
-          description: 'Ensalada de alcachofas con queso de cabra y aderezo de yogur, cubierta con nueces crujientes y hierbas frescas.',
-          isShowing: false,
-          zIndex: 0
-        },
-        {
-          image: require('@/assets/Ternera.jpg'),
-          title: 'Ternera',
-          subtitle: '',
-          description: 'Filete de ternera con sal marina y pimienta molida, aceite de semilla de uva acompañado de hojas de acedera.',
-          isShowing: false,
-          zIndex: 0
-        },
-      ],
-      isShowing: false,
-      zindex: 10,
     };
   },
   methods: {
