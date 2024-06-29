@@ -1,109 +1,34 @@
-
 <template>
-  <div
-    class="page-header align-items-start min-vh-100"
-    :style="{
-      backgroundImage: 'url(' + require('@/assets/Restaurante5.jpg') + ')',
-    }"
-    loading="lazy"
-  >
- <!--   <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="page-header align-items-start min-vh-100" :style="{
+    backgroundImage: 'url(' + require('@/assets/Restaurante5.jpg') + ')',
+  }" loading="lazy">
+    <div class="overlay">
+      <div class="login">
+        <form class="form1" @submit.prevent="handleSubmit">
 
-    <div class="container-sm w-50 my-auto">
-      <div class="row">
-        <div class="col">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">
-              <h5 class="card-title">Registrarse</h5>
+          <h1 class="h11">Registrarse</h1>
 
-              <form @submit.prevent="handleSubmit">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Nombre</label>
-                  <input
-                    v-model="name"
-                    id="name"
-                    name="name"
-                    type="text"
-                    class="form-control"
-                    required
-                  />
-                </div>
+          <label class="label1">Nombre</label>
+          <input class="input1" v-model="name" id="name" name="name" type="text" required>
 
-                <div class="mb-3">
-                  <label for="email" class="form-label">Correo</label>
-                  <input
-                    v-model="email"
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="form-control"
-                    required
-                  />
-                </div>
+          <label class="label1">Correo</label>
+          <input class="input1" v-model="email" id="email" name="email" type="email" required>
 
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input
-                    v-model="password"
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    required
-                  />
-                </div>
+          <label class="label1">Contraseña</label>
+          <input class="input1" v-model="password" id="password" type="password" required>
 
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  :disabled="!isFormValid"
-                >
-                  Enviar
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+          <button class="button11" type="submit" :disabled="!isFormValid">
+            Enviar</button>
+        </form>
       </div>
     </div>
-  -->
-    <div class="overlay">
-    <div class="login">
-      <form class="form1" @submit.prevent="handleSubmit">
-
-        <h1 class="h11">Registrarse</h1>
-
-        <label class="label1">Nombre</label>
-        <input class="input1"  v-model="name"
-                    id="name"
-                    name="name"
-                    type="text"
-                    required>
-
-        <label class="label1">Correo</label>
-        <input class="input1" v-model="email"
-                    id="email"
-                    name="email"
-                    type="email"
-                    required>
-
-        <label class="label1">Contraseña</label>
-        <input  class="input1" v-model="password"
-                    id="password"
-                    type="password"
-                    required>
-
-        <button class="button11"  
-                type="submit"
-                :disabled="!isFormValid">
-                  Enviar</button>
-      </form>
-    </div>
-  </div>
 
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -124,15 +49,18 @@ export default {
   },
 
   methods: {
+    ...mapActions ('user', ['registerUser']),
+
     async handleSubmit() {
       try {
-        const data = await registerUser({
+        const data = {
           name: this.name,
           email: this.email,
           password: this.password,
-        });
+        }
 
-        console.log(data);
+        await this.registerUser(data);
+        this.$router.push({ name: 'login-user' });
       } catch (error) {
         console.error(error);
       }
@@ -141,5 +69,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

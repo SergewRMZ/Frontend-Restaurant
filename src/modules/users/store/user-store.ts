@@ -74,6 +74,15 @@ const UserStore = {
       }
     },
 
+    async registerUser ({commit}: any, user:TypeUser) {
+      try {
+        const data = await User.registerUser(user);
+        console.log(`Usuario registrado ${data}`);
+      } catch (error: any) {
+        throw error;
+      }
+    },
+
     async logout ({ commit }: any) {
       sessionStorage.removeItem('TOKEN');
       sessionStorage.removeItem('logged');
