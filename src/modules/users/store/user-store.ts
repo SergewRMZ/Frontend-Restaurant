@@ -91,6 +91,10 @@ const UserStore = {
       sessionStorage.removeItem('email');
       commit('setLoggedIn', false);
       await new Promise(resolve => setTimeout(resolve, 500));
+    },
+
+    async registerUser ({commit}:any, user: TypeUser) {
+      const data = await User.registerUser(user);
     }
   },
 

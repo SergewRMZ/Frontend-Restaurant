@@ -1,7 +1,11 @@
 <template>
-  <div class="page-header align-items-start min-vh-100" :style="{
-    backgroundImage: 'url(' + require('@/assets/Restaurante5.jpg') + ')',
-  }" loading="lazy">
+  <div
+    class="page-header align-items-start min-vh-100"
+    :style="{
+      backgroundImage: 'url(' + require('@/assets/Restaurante5.jpg') + ')',
+    }"
+    loading="lazy"
+  >
     <div class="overlay">
       <div class="login">
         <form class="form1" @submit.prevent="handleSubmit">
@@ -49,15 +53,13 @@ export default {
   },
 
   methods: {
-    ...mapActions ('user', ['registerUser']),
-
     async handleSubmit() {
       try {
-        const data = {
+        const data = await registerUser({
           name: this.name,
           email: this.email,
           password: this.password,
-        }
+        });
 
         await this.registerUser(data);
         this.$router.push({ name: 'login-user' });
