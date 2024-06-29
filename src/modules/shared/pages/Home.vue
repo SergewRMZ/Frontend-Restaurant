@@ -181,7 +181,9 @@
       <div class="row">
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
-            <h6 class="text-sm">LOGO</h6>
+            <h6 class="text-sm">
+              <img src="@/assets/LOGOR.png" class="img-fluid"/>
+            </h6>
             <ul class="flex-column ms-n3 nav"></ul>
           </div>
         </div>
@@ -199,7 +201,7 @@
             <h6 class="text-sm">Horario</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">Lunes-Viernes</li>
-              <li class="nav-item">00:00 a 00:00</li>
+              <li class="nav-item"> </li>
             </ul>
           </div>
         </div>
