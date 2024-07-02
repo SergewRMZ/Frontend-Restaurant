@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     name: 'home',
-    component: () => import (/* webpackChunkName: "Home" */ '@/modules/menu/views/Home.vue')
+    component: () => import (/* webpackChunkName: "Home" */ '@/modules/shared/pages/Home.vue')
   },
 
   {
@@ -50,7 +50,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/carta',
     name: 'carta',
-    component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/shared/pages/Menu.vue')
+    component: () => import (/* webpackChunkName: "ReservacionUsuario */ '@/modules/menu/views/Menu.vue')
   },
 
   // Si se ingresa cualquier otra ruta, se direcciona al home

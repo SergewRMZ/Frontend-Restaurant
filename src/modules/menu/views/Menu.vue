@@ -3,44 +3,59 @@
     <br>
     <h2>Nuestra Carta</h2>
     <div class="cards" :class="{ showing: isShowing }">
-      <div
-        v-for="(card, index) in cards"
+      <!-- <div
+        v-for="(product, index) in products"
         :key="index"
         class="card"
         :class="{ show: card.isShowing }"
         :style="{ zIndex: card.zIndex }"
         @click="toggleCard(index)"
-      >
+      > -->
+       
+      <div v-for="product in products" :key="product.id" class="card" @click="toggleCard(product.id)">
         <div class="card__image-holder">
-          <img class="card__image" :src="card.image" alt="Card image" />
+          <img class="card__image" :src="getProductImage(product.img)" alt="Card image"/>
         </div>
         <div class="card-title">
           <h2>
-            {{ card.title }}
-            <small>{{ card.subtitle }}</small>
+            {{ product.name }}
+            <small class="text-warning">{{ product.category.name }}</small>
           </h2>
         </div>
         <div class="card-description">
-          {{ card.description }}
+          <p>{{ product.description }}</p>
+          <span class="text-success fw-bold">${{ product.price }}</span>
         </div>
       </div>
     </div>
   </div>
+
+  
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
   data() {
     return {
+      page: 1,
+      limit: 10
     };
   },
-  methods: {
-    toggleCard(index) {
-      const card = this.cards[index];
-      const isShowing = card.isShowing;
 
+  computed: {
+    ...mapState('menu', ['total', 'products'])
+  },
+
+  methods: {
+    ...mapActions('menu', ['getProducts']),
+
+    toggleCard(productId) {
+      const card = this.products.find(product => product.id === productId);
+      const isShowing = card.isShowing;
       if (this.isShowing) {
-        this.cards.forEach(c => c.isShowing = false);
+        this.products.forEach(p => p.isShowing = false);
 
         if (isShowing) {
           this.isShowing = false;
@@ -55,7 +70,16 @@ export default {
       }
 
       this.zindex++;
+    },
+
+    getProductImage(product) {
+      return `http://localhost:3000/api/images/products/${product}`;
     }
+
+  },
+
+  async mounted() {
+    await this.getProducts({ page: this.page, limit: this.limit });
   }
 }
 </script>
