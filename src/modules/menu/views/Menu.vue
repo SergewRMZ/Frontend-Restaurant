@@ -228,7 +228,7 @@ div.card.show .flap2 {
 <template>
   <div>
     <br>
-    <h2>Nuestra Carta</h2>
+    <h2 class="lobster-two-bold animate__animated animate__fadeInDown animate_slow">Nuestra Carta</h2>
     <div class="cards" :class="{ showing: isShowing }">
       <div
         v-for="product in products"
@@ -248,7 +248,7 @@ div.card.show .flap2 {
         </div>
         <div class="card-description">
           <p>{{ product.description }}</p>
-          <span class="text-success fw-bold">${{ product.price }}</span>
+          <span class="text-success fw-bold"> Precio: ${{ product.price }}</span>
         </div>
       </div>
     </div>
@@ -309,7 +309,7 @@ body {
 }
 
 div.cards {
-  margin: 80px auto;
+  margin: 20px auto;
   max-width: 960px;
   text-align: center;
   display: flex;

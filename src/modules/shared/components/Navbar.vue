@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--color__primario)">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="@/assets/LOGO_SN.png" class="img-fluid" width="50" height="50"/>
